@@ -25,7 +25,6 @@ class IndexContainer extends Component {
   getTrails(event) {
     event.preventDefault()
   fetch(`https://www.hikingproject.com/data/get-trails?lat=${this.state.latitude}&lon=${this.state.longitude}&maxDistance=20&maxResults=10&key=200194560-fb9571a59c9153ab40e20ca3cd633ee7`)
-
   .then(response => {
     if (response.ok) {
       return response;
