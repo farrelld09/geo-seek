@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+.top-bar {
+color:#313131;
+text-rendering: optimizeLegibility;
+text-shadow: 2px 2px white;
+text-align: center;
+background-size: auto;
+background-image: url('https://thumbs.dreamstime.com/t/mountain-range-summer-landscape-horizontal-banner-vector-illustration-69212905.jpg');
+box-shadow: inset 10px 10px 10px rgba(0,0,0,0.8);
+padding-bottom: 5px;
+margin-bottom: 5px;
+}
+
+#tileImg {
+shadow: 10px;
+border-radius: 20%;
+height: 15em;
+width: 15em;
+border-style: inset;
+border-width: medium;
+}
+
+#tileText{
+font-weight: bold;
+margin: auto;
+text-align: center;
+}
