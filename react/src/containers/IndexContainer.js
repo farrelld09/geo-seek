@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import { Route, IndexRoute, Router, browserHistory, Link, Redirect } from 'react-router';
-
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import TrailTile from '../components/TrailTile';
 
 class IndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      artist: '',
-      lyrics:''
+      latitude: '',
+      longitude: '',
+      trailinfo: []
     }
-    this.getLyrics = this.getLyrics.bind(this)
-    this.handleChangeArtist = this.handleChangeArtist.bind(this)
-    this.handleChangeTitle = this.handleChangeTitle.bind(this)
+    this.getTrails = this.getTrails.bind(this)
+    this.handleChangeLatitude = this.handleChangeLatitude.bind(this)
+    this.handleChangeLongitude = this.handleChangeLongitude.bind(this)
   }
 
-  getLyrics(event) {
+  ComponentDidMount() {
+    this.setState({
+      trailinfo: []
+    })
+  }
+
+  getTrails(event) {
     event.preventDefault()
-  fetch(`https://api.lyrics.ovh/v1/${this.state.artist}/${this.state.title}`)
+  fetch(`https://www.hikingproject.com/data/get-trails?lat=${this.state.latitude}&lon=${this.state.longitude}&maxDistance=20&maxResults=10&key=200194560-fb9571a59c9153ab40e20ca3cd633ee7`)
   .then(response => {
     if (response.ok) {
       return response;
@@ -30,34 +37,45 @@ class IndexContainer extends Component {
   .then(response => response.json())
   .then(body => {
     this.setState({
-      lyrics: body.lyrics
+      trailinfo: body.trails
     })
   })
   .catch(error => console.error(`Error in fetch: ${error.message}`));
 }
 
-handleChangeArtist(event) {
-  this.setState({ artist: event.target.value })
+handleChangeLatitude(event) {
+  this.setState({ latitude: event.target.value })
 }
 
-handleChangeTitle(event) {
-  this.setState({ title: event.target.value })
+handleChangeLongitude(event) {
+  this.setState({ longitude: event.target.value })
 }
 
 
   render () {
+    let returnedTrails = this.state.trailinfo.map(trail => {
+      return (
+        <TrailTile
+          key={trail.id}
+          id={trail.id}
+          trail={trail}
+        />
+      );
+    });
 
     return (
       <div>
-        <h1>Here we go</h1>
-        <form onSubmit={this.getLyrics}>
-          <label htmlFor="title">Title:</label>
-          <input type="text" name="Title" value={this.state.title} onChange={this.handleChangeTitle}/>
-          <label htmlFor="artist">Artist:</label>
-          <input type="text" name="artist" value={this.state.artist} onChange={this.handleChangeArtist}/>
-          <input type="submit" value="Get Lyrics!"/>
+        <h1>Find Trails</h1>
+        <form onSubmit={this.getTrails}>
+          <label htmlFor="latitude">Latitude:</label>
+          <input type="text" name="number" value={this.state.latitude} onChange={this.handleChangeLatitude}/>
+          <label htmlFor="longitude">Longitude:</label>
+          <input type="number" name="longitude" value={this.state.longitude} onChange={this.handleChangeLongitude}/>
+          <input type="submit" value="Get Trails!"/>
         </form>
-         {this.state.lyrics}
+        <div className="rows">
+         {returnedTrails}
+        </div>
       </div>
     )
   }
