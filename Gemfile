@@ -5,16 +5,16 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'coffee-rails', '~> 4.2'
 gem 'figaro'
-gem 'rails', '~> 5.1.4'
+gem 'jbuilder', '~> 2.5'
+gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
+gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'jbuilder', '~> 2.5'
 gem 'turbolinks', '~> 5.0.0'
-gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -28,8 +28,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'capybara'
   gem 'coveralls', require: false
 end
 
