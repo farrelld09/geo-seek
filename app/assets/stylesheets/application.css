@@ -13,6 +13,32 @@
  *= require_tree .
  *= require_self
  */
+ #fly{
+display: block;
+position: relative;
+margin: 0px auto;
+width: 50%;
+height: 40px;
+padding: 10px;
+border: none;
+border-radius: 3px;
+font-size: 12px;
+text-align: center;
+color: #fff;
+background: #ee8a65;
+}
+
+#googlewelcome{
+text-decoration: bold;
+color: #8c4511;
+}
+
+#map{
+border-width: thick;
+border-style: solid;
+border-color: #da9432;
+}
+
 .top-bar {
 color:#313131;
 text-rendering: optimizeLegibility;
