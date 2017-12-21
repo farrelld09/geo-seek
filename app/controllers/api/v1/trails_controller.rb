@@ -1,5 +1,4 @@
 class Api::V1::TrailsController < ApiController
-
   def index
     trails = Trail.all
     render json: trails
@@ -16,7 +15,7 @@ class Api::V1::TrailsController < ApiController
     else
       render json:
       { error: trail.errors.full_messages },
-        status: :unprocessable_entity
+      status: :unprocessable_entity
     end
   end
 
@@ -45,7 +44,7 @@ class Api::V1::TrailsController < ApiController
       :latitude,
       :conditionStatus,
       :conditionDetails,
-      :conditionDate,
-      )
-    end
+      :conditionDate
+    )
   end
+end
