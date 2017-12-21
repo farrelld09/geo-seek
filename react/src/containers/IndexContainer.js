@@ -53,16 +53,16 @@ class IndexContainer extends Component {
   }
 
   flyer(long, lat) {
-    var start = [-75.16, 39.95];
+    var start = [this.state.longitude, this.state.latitude];
     var end = [long, lat];
     var isAtStart = true;
     var target = isAtStart ? end : start;
     isAtStart = !isAtStart;
     map.flyTo({
        center: target,
-       zoom: 9,
+       zoom: 18,
        bearing: 0,
-       speed: 1,
+       speed: 3.5,
        curve: 1,
        easing: function (t) {
            return t;
@@ -71,16 +71,6 @@ class IndexContainer extends Component {
     }
 
   render () {
-    var nav = new mapboxgl.NavigationControl();
-    map.addControl(nav, 'top-left');
-
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: {
-          enableHighAccuracy: true
-        },
-        trackUserLocation: true
-      })
-    );
 
     let returnedTrails = this.state.trailinfo.map(trail => {
       return (
