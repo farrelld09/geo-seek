@@ -28,6 +28,16 @@
           container: 'map',
           style: 'mapbox://styles/mapbox/streets-v9'
       });
+      var nav = new mapboxgl.NavigationControl();
+      map.addControl(nav, 'top-left');
+
+      map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+          },
+          trackUserLocation: true
+        })
+      );
       </script>
     <%= yield %>
   </body>
