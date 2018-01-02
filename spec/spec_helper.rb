@@ -14,6 +14,7 @@ SimpleCov.start do
   add_filter 'app/controllers/api_controller'
   add_filter 'app/channels/application_cable/connection'
   add_filter 'app/channels/application_cable/channel'
+  add_filter 'spec/features/user_logs_in_with_google_spec'
 end
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

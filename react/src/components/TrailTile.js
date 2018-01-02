@@ -52,7 +52,6 @@ const TrailTile = props => {
     })
     .then(response => response.json())
     .then(body => {
-
       console.log("Mountains here we come!")
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
