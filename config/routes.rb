@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
 
   resources :trails
+  resources :users
 
   namespace :api do
     namespace :v1 do

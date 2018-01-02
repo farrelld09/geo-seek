@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/helios-technologies/skeleton-rails
+  revision: 6e46649d29006643b33c95b82bc9d0e28df2f8cc
+  specs:
+    skeleton-rails (1.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -52,13 +58,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.1.2)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     coveralls (0.8.21)
       json (>= 1.8, < 3)
@@ -244,7 +243,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara
-  coffee-rails (~> 4.2)
   coveralls
   factory_girl
   figaro
@@ -259,6 +257,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
+  skeleton-rails!
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5.0.0)

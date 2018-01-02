@@ -8,20 +8,47 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
     integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
     crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
     integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
     crossorigin=""></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css"></script>
+    <link rel="stylesheet" <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">>
+    <script src='https://unpkg.com/mapbox@1.0.0-beta9/dist/mapbox-sdk.min.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.css' type='text/css' />
   </head>
   <body>
     <div class="top-bar">
-      <h1>Take A Hike!</h1>
+      <span><h1 id="title">Take A Hike</h1><span>
     </div>
-    <div id='map' style='width: 100%; height: 300px;'></div>
+<nav class="navigation">
+  <a href="#" class="menu-icon">
+    <i class="fa fa-bars"></i>
+  </a>
+  <ul class="main-navigation" role="navigation">
+    <% if current_user  %>
+      <li id="menu">Signed in as <%= "#{current_user.first_name} #{current_user.last_name}" %></li>
+      <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="logout">Sign Out</a></li>
+    <% else %>
+      <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="auth/google">Sign In</a></li>
+    <% end %>
+    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="/trails">Home</a></li>
+    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="users/1">My Hikes</a></li>
+    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="#why-us">Why us?</a></li>
+    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
+      <div id='map'></div>
+    </div>
+  </div>
+</div>
       <script>
       mapboxgl.accessToken = 'pk.eyJ1IjoiZmFycmVsbGQwOSIsImEiOiJjamI0ZWVtdGc4Mm04MndyenRldW9wYzllIn0.djhxR3NXo9cTIOlCmHNLvQ';
       var map = new mapboxgl.Map({
@@ -30,6 +57,10 @@
       });
       var nav = new mapboxgl.NavigationControl();
       map.addControl(nav, 'top-left');
+
+      map.addControl(new MapboxDirections({
+      accessToken: mapboxgl.accessToken
+    }), 'bottom-right');
 
       map.addControl(new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -40,5 +71,9 @@
       );
       </script>
     <%= yield %>
-  </body>
+  <footer>
+    <strong><p>Questions?  Send me an email: <a href="mailto:farrelld09@gmail.com">
+    farrelld09@gmail.com</a></p></strong>
+  </footer>
+</body>
 </html>

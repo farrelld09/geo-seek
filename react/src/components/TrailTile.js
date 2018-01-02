@@ -42,6 +42,7 @@ const TrailTile = props => {
     })
     .then(response => {
       if (response.ok) {
+        alert("Trail added to database!")
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
@@ -51,16 +52,26 @@ const TrailTile = props => {
     })
     .then(response => response.json())
     .then(body => {
+
       console.log("Mountains here we come!")
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  let trailpic
+
+  if (props.trail.imgMedium == '') {
+    trailpic = 'https://image.flaticon.com/icons/svg/281/281517.svg'
+  } else {
+    trailpic = props.trail.imgMedium
+  }
+
   return(
-      <div className="small-12 medium-4 columns">
-        <Link to={`/trails/${props.id}`} onClick={newTrail}><h6 id="tileText">{props.trail.name}</h6></Link>
-        <img id="tileImg" src={props.trail.imgMedium}></img>
-        <button id='fly' onClick={flyer}>Map it!</button>
+      <div className="one-third column" onClick={props.renderShow}>
+        <div className="post-module animated bounceInUp">
+          <Link to={`/trails/${props.id}`} onClick={newTrail}><p id="tileText">{props.trail.name}</p></Link>
+          <img id="tileImg" src={trailpic} onClick={flyer}/>
+        </div>
       </div>
   );
 };
