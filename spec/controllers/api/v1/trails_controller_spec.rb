@@ -2,36 +2,34 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe Api::V1::TrailsController, type: :controller do
-
   let!(:trail) do
     Trail.create(
-    id:'2',
-    name:'trail1',
-    summary:'trail1',
-    difficulty: 3,
-    stars: 3,
-    starVotes: 3,
-    location:'Boulder',
-    url:'.com',
-    imgSqSmall:'url',
-    imgSmall:'url',
-    imgSmallMed:'url',
-    imgMedium:'url',
-    length:'6',
-    ascent:'6',
-    descent:'6',
-    high:'6',
-    low:'6',
-    longitude:'6',
-    latitude:'6',
-    conditionStatus:'good',
-    conditionDetails:'good',
+      id: '2',
+      name: 'trail1',
+      summary: 'trail1',
+      difficulty: 3,
+      stars: 3,
+      starVotes: 3,
+      location: 'Boulder',
+      url: '.com',
+      imgSqSmall: 'url',
+      imgSmall: 'url',
+      imgSmallMed: 'url',
+      imgMedium: 'url',
+      length: '6',
+      ascent: '6',
+      descent: '6',
+      high: '6',
+      low: '6',
+      longitude: '6',
+      latitude: '6',
+      conditionStatus: 'good',
+      conditionDetails: 'good'
     )
   end
 
   describe 'GET#index' do
     it 'returns a list of all the superheroes' do
-
       get :index
       returned_json = JSON.parse(response.body)
 
@@ -64,7 +62,6 @@ RSpec.describe Api::V1::TrailsController, type: :controller do
 
   describe 'GET#show' do
     it 'returns a single trail' do
-
       get :show, params: { id: trail.id }
       returned_json = JSON.parse(response.body)
 
@@ -96,32 +93,31 @@ RSpec.describe Api::V1::TrailsController, type: :controller do
 
   describe 'POST#create' do
     it 'posts a single trail' do
-
       params =
         {
           trail:
             {
-              id:'3',
-              name:'trail1',
-              summary:'trail1',
-              difficulty:'3',
-              stars:'3',
-              starVotes:'3',
-              location:'Boulder',
-              url:'.com',
-              imgSqSmall:'url',
-              imgSmall:'url',
-              imgSmallMed:'url',
-              imgMedium:'url',
-              length:'6',
-              ascent:'6',
-              descent:'6',
-              high:'6',
-              low:'6',
-              longitude:'6',
-              latitude:'6',
-              conditionStatus:'good',
-              conditionDetails:'good',
+              id: '3',
+              name: 'trail1',
+              summary: 'trail1',
+              difficulty: '3',
+              stars: '3',
+              starVotes: '3',
+              location: 'Boulder',
+              url: '.com',
+              imgSqSmall: 'url',
+              imgSmall: 'url',
+              imgSmallMed: 'url',
+              imgMedium: 'url',
+              length: '6',
+              ascent: '6',
+              descent: '6',
+              high: '6',
+              low: '6',
+              longitude: '6',
+              latitude: '6',
+              conditionStatus: 'good',
+              conditionDetails: 'good'
             }
         }
 
