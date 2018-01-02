@@ -70,7 +70,6 @@ RSpec.describe Api::V1::TrailsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
-      binding.pry
       expect(returned_json['id']).to eq 2
       expect(returned_json['name']).to eq 'trail1'
       expect(returned_json['summary']).to eq 'trail1'
