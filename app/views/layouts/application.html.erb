@@ -38,8 +38,6 @@
     <% end %>
     <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="/trails">Home</a></li>
     <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="users/1">My Hikes</a></li>
-    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="#why-us">Why us?</a></li>
-    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="#contact">Contact</a></li>
   </ul>
 </nav>
 <div class="outer">
@@ -53,7 +51,11 @@
       mapboxgl.accessToken = 'pk.eyJ1IjoiZmFycmVsbGQwOSIsImEiOiJjamI0ZWVtdGc4Mm04MndyenRldW9wYzllIn0.djhxR3NXo9cTIOlCmHNLvQ';
       var map = new mapboxgl.Map({
           container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v9'
+          style: 'mapbox://styles/mapbox/streets-v9',
+          maxBounds: [
+             [-180, 90],
+             [180, -90]
+         ]
       });
       var nav = new mapboxgl.NavigationControl();
       map.addControl(nav, 'top-left');

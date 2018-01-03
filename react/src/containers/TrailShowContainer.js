@@ -31,6 +31,7 @@ class TrailShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
         trailinfo: body
       });
@@ -56,7 +57,6 @@ class TrailShowContainer extends Component {
   })
   .then(response => response.json())
   .then(body => {
-    debugger
     this.setState({
       weatherinfo: [body.current_observation]
     });
