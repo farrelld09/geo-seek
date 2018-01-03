@@ -2,7 +2,7 @@ class TrailSerializer < ActiveModel::Serializer
   attributes :id,
             :name,
             :summary,
-            :difficulty.
+            :difficulty,
             :stars,
             :starVotes,
             :location,
