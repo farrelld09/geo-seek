@@ -113,7 +113,6 @@ class TrailShowContainer extends Component {
     }
 
     let weather = this.state.weatherinfo.map(forecast =>{
-      debugger
       return(
         <WeatherTile
           feelslike={forecast.feelslike_string}

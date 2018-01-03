@@ -67,9 +67,19 @@ const TrailTile = props => {
 
   return(
       <div className="one-third column" onClick={props.renderShow}>
-        <div className="post-module animated bounceInUp">
-          <Link to={`/trails/${props.id}`} onClick={newTrail}><p id="tileText">{props.trail.name}</p></Link>
-          <img id="tileImg" src={trailpic} onClick={flyer}/>
+        <div id="tilecontainer" className="post-module animated bounceInUp">
+          <div className="flip-container" ontouchstart="this.classList.toggle('hover');">
+	            <div className="flipper">
+		            <div className="front">
+			           <img id="tileImg" src={trailpic}/>
+		            </div>
+		          <div className="back">
+                <div className="centered">
+                 <Link to={`/trails/${props.id}`} onClick={newTrail}><p id="tileText">{props.trail.name}</p></Link>
+                </div>
+              </div>
+		         </div>
+	         </div>
         </div>
       </div>
   );
