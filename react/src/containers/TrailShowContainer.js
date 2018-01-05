@@ -20,7 +20,6 @@ class TrailShowContainer extends Component {
     this.getWeather = this.getWeather.bind(this)
     this.getTrailData = this.getTrailData.bind(this)
     this.getTrips = this.getTrips.bind(this)
-    // this.addHike = this.addHike.bind(this)
     this.showTrips = this.showTrips.bind(this)
   }
 
@@ -44,6 +43,7 @@ class TrailShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
         trailinfo: body.trail
       });
@@ -52,29 +52,6 @@ class TrailShowContainer extends Component {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-
-  // addHike(newHike) {
-  //   fetch('/api/v1/hikes', {
-  //     credentials: 'same-origin',
-  //     method: 'POST',
-  //     body: JSON.stringify(newHike),
-  //     headers: { 'Content-Type': 'application/json' }
-  //   })
-  //   .then(response => {
-  //     if (response.ok) {
-  //       alert("Hike added!")
-  //       return response;
-  //     } else {
-  //       let errorMessage = `${response.status} (${response.statusText})`,
-  //       error = new Error(errorMessage);
-  //       throw(error);
-  //     }
-  //   })
-  //   .then(response => response.json())
-  //   .then(body => {
-  //   })
-  //   .catch(error => console.error(`Error in fetch: ${error.message}`));
-  // }
 
   getTrips() {
     fetch(`/api/v1/trips`, {
