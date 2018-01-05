@@ -66,23 +66,23 @@ const TrailTile = props => {
   }
 
   return(
-      <div className="one-third column" onClick={props.renderShow}>
-        <div id="tilecontainer" className="post-module animated bounceInUp">
-          <div className="flip-container" ontouchstart="this.classList.toggle('hover');">
-	            <div className="flipper">
-		            <div className="front">
-			           <img id="tileImg" src={trailpic}/>
-		            </div>
-		          <div className="back">
-                <div className="centered">
-                 <Link to={`/trails/${props.id}`} onClick={newTrail}><p id="tileText">{props.trail.name}</p></Link>
-                </div>
+    <div className="one-third column" onClick={props.renderShow}>
+      {/* <div id="tilecontainer" className="post-module animated bounceInUp"> */}
+        <div id="tilecontainer" className="flip-container post-module animated bounceInUp">
+            <div className="flipper">
+              <div className="front">
+               <img id="tileImg" src={trailpic}/>
               </div>
-		         </div>
-	         </div>
-        </div>
+            <div className="back">
+              <div className="centered">
+               <Link to={`/trails/${props.id}`} onClick={newTrail}><p id="tileText">{props.trail.name}</p></Link>
+              </div>
+            </div>
+           </div>
+         </div>
       </div>
-  );
+    // </div>
+);
 };
 
 export default TrailTile;

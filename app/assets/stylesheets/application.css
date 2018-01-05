@@ -25,8 +25,8 @@ transform: rotateY(180deg);
 }
 
 .flip-container, .front, .back {
-width: 320px;
-height: 320px;
+width: 15em;
+height: 15em;
 }
 
 /* flip speed goes here */
@@ -86,6 +86,18 @@ animation-timing-function: linear;
 animation-iteration-count: infinite;
 -webkit-animation-direction: alternate;
 animation-direction: alternate;
+}
+
+#invisible{
+display: none;
+}
+
+#visible{
+display:list-item;
+}
+
+a{
+color: white;
 }
 
 .post-module {
@@ -152,7 +164,7 @@ background-color: #FFFFFF;
 }
 
 label {
-font-family: 'Berkshire Swash', cursive;
+font-family: sans-serif;
 color:#C3511D;
 }
 
@@ -180,6 +192,18 @@ margin-left: auto;
 margin-right: auto;
 width: 80%;
 height: 500px;
+}
+
+#title1{
+color:#C3511D;
+}
+
+#title1:hover{
+color: #FFA278
+}
+
+#title{
+font-size: 5.1em;
 }
 
 #title{
@@ -213,6 +237,19 @@ height: 200px;
 
 a{
 background-color: #C3511D;
+}
+
+#submit1{
+text-align: center;
+background-color: #C3511D;
+color: white;
+text: bold;
+width: 240px;
+height: 40px;
+}
+
+#submit1:hover{
+background-color: #FFA278;
 }
 
 #submit{
@@ -254,13 +291,22 @@ border-color: #C3511D;
 padding: .5em;
 }
 
+#forecast{
+font-family: 'Berkshire Swash', cursive;
+color:#C3511D;
+font-weight: bold;
+}
+
 .showinfo{
 margin: auto;
 padding: .5em;
 }
 
-#info{
-background-color: #C3511D;
+
+.info{
+font-weight: bold;
+color: #C3511D;
+font-family: sans-serif;
 }
 
 #tileText:hover{

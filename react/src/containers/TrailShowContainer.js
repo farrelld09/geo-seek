@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TrailTile from "../components/TrailTile";
 import Scrollchor from 'react-scrollchor';
 import WeatherTile from '../components/WeatherTile';
+import HikeTile from '../components/HikeTile';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 
 class TrailShowContainer extends Component {
@@ -9,14 +10,25 @@ class TrailShowContainer extends Component {
     super(props);
     this.state = {
       trailinfo: [],
-      weatherinfo: []
+      weatherinfo: [],
+      userId: 0,
+      userTrips: [],
+      tripMenuClicked: false
     }
     this.createPoint = this.createPoint.bind(this)
     this.flyer = this.flyer.bind(this)
     this.getWeather = this.getWeather.bind(this)
+    this.getTrailData = this.getTrailData.bind(this)
+    this.getTrips = this.getTrips.bind(this)
+    this.showTrips = this.showTrips.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount () {
+    this.getTrailData();
+    this.getTrips();
+  }
+
+  getTrailData() {
     fetch(`/api/v1/trails/${this.props.params.id}`, {
     credentials: 'same-origin'
     })
@@ -33,7 +45,7 @@ class TrailShowContainer extends Component {
     .then(body => {
       debugger
       this.setState({
-        trailinfo: body
+        trailinfo: body.trail
       });
       this.createPoint();
       this.flyer();
@@ -41,28 +53,50 @@ class TrailShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  getWeather(event) {
-  event.preventDefault()
-  let latitude = this.state.trailinfo.latitude
-  let longitude = this.state.trailinfo.longitude
-  fetch(`http://api.wunderground.com/api/25ce28b936883239/conditions/q/${latitude},${longitude}.json`)
-  .then(response => {
-  if (response.ok) {
-    return response;
-  } else {
-    let errorMessage = `${response.status} (${response.statusText})`,
-    error = new Error(errorMessage);
-    throw(error);
+  getTrips() {
+    fetch(`/api/v1/trips`, {
+    credentials: 'same-origin'
+    })
+    .then(response => {
+    if (response.ok) {
+      return response;
+    } else {
+      let errorMessage = `${response.status} (${response.statusText})`,
+      error = new Error(errorMessage);
+      throw(error);
+    }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        userTrips: body
+      });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-  })
-  .then(response => response.json())
-  .then(body => {
-    this.setState({
-      weatherinfo: [body.current_observation]
-    });
-  })
-  .catch(error => console.error(`Error in fetch: ${error.message}`));
-}
+
+  getWeather(event) {
+    event.preventDefault()
+    let latitude = this.state.trailinfo.latitude
+    let longitude = this.state.trailinfo.longitude
+    fetch(`http://api.wunderground.com/api/25ce28b936883239/conditions/q/${latitude},${longitude}.json`)
+    .then(response => {
+    if (response.ok) {
+      return response;
+    } else {
+      let errorMessage = `${response.status} (${response.statusText})`,
+      error = new Error(errorMessage);
+      throw(error);
+    }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        weatherinfo: [body.current_observation]
+      });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
   createPoint() {
   var geojson = {
@@ -84,8 +118,8 @@ class TrailShowContainer extends Component {
   .addTo(map);
   }
 
-  flyer(long, lat) {
-    var start = [0, 0];
+  flyer() {
+    var start = [0,0];
     var end = [this.state.trailinfo.longitude,
       this.state.trailinfo.latitude];
     var isAtStart = true;
@@ -103,7 +137,23 @@ class TrailShowContainer extends Component {
        })
     }
 
+    showTrips() {
+      if (this.state.tripMenuClick == false) {
+        this.setState({tripMenuClick: true});
+      } else {
+        this.setState({tripMenuClick: false});
+      }
+    }
+
   render() {
+
+    let tripMenu
+
+    if (this.state.tripMenuClick) {
+      tripMenu = "visible";
+    } else {
+      tripMenu = "invisible"
+    }
 
     let trailpic
     if (this.state.trailinfo.imgMedium == '') {
@@ -122,18 +172,33 @@ class TrailShowContainer extends Component {
       )
     })
 
+    let trips = this.state.userTrips.map(trip => {
+      return(
+        <HikeTile
+          key={trip.id}
+          tripId={trip.id}
+          name={trip.name}
+          trailId={this.state.trailinfo.id}
+          addHike={this.addHike}
+        />
+      )
+    })
+
     return(
       <div>
         <div className="container">
           <div className="row">
             <h1 id="trailshowtitle">{this.state.trailinfo.name}</h1>
             <img id="showImage" src={trailpic}></img>
-            <button onClick={this.getWeather}>Get Weather Conditions</button>
-              <p className="info">City: {this.state.trailinfo.location}<br/>
-              Trail Length: {this.state.trailinfo.length} miles<br/>
-              Rating: {this.state.trailinfo.stars}/5<br/>
-              For directions to trailhead, enter coordinates into map<br/>
-              Latitude/Longitude: {this.state.trailinfo.latitude}/{this.state.trailinfo.longitude}<br/>
+            <button id="submit1" onClick={this.showTrips}>ADD TO TRIP</button>
+            <button id="submit1" onClick={this.getWeather}>GET WEATHER CONDITIONS</button>
+            <button id="submit1" onClick={this.flyer}>RE-PIN TRAILHEAD</button>
+              <div id={tripMenu}>
+                {trips}
+              </div>
+              <p className="info">CITY: {this.state.trailinfo.location}<br/>
+              TRAIL LENGTH: {this.state.trailinfo.length} miles<br/>
+              RATING: {this.state.trailinfo.stars}/5<br/>
               </p>
               <div className="weather">
                 {weather}

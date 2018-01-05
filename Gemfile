@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "active_model_serializers"
+gem 'active_model_serializers'
+gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.5'
 gem 'omniauth-google-oauth2', '~> 0.2.1'
@@ -23,7 +24,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
 end
