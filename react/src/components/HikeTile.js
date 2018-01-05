@@ -9,12 +9,33 @@ const HikeTile = props => {
     trail_id: props.trailId,
     rank: 99
   }
-  // let addHike = (newHike) => {props.addHike(newHike)}
+
+  let addHike = () => {
+    fetch('/api/v1/hikes', {
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(newHike),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Hike added!")
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
   return(
-
     <div>
-      <button id="submit1" onClick={props.addHike()}>{props.name}</button>
+      <button id="submit1" onClick={addHike}>{props.name}</button>
     </div>
   );
 };
