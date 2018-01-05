@@ -5,8 +5,8 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet' />
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
   </head>
   <body>
     <div class="top-bar">
-      <span><h1 id="title">Take A Hike</h1><span>
+      <span><h1 id="title"><a href="/trails" id="title1">Take A Hike</a></h1><span>
     </div>
 <nav class="navigation">
   <a href="#" class="menu-icon">
@@ -36,10 +36,6 @@
     <% else %>
       <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="auth/google">Sign In</a></li>
     <% end %>
-    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="/trails">Home</a></li>
-    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="users/1">My Hikes</a></li>
-    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="#why-us">Why us?</a></li>
-    <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="#contact">Contact</a></li>
   </ul>
 </nav>
 <div class="outer">
@@ -53,7 +49,12 @@
       mapboxgl.accessToken = 'pk.eyJ1IjoiZmFycmVsbGQwOSIsImEiOiJjamI0ZWVtdGc4Mm04MndyenRldW9wYzllIn0.djhxR3NXo9cTIOlCmHNLvQ';
       var map = new mapboxgl.Map({
           container: 'map',
+          center: [0,0],
           style: 'mapbox://styles/mapbox/streets-v9'
+          // maxBounds: [
+          //   [-180, 90],
+          //   [180, -90]
+          // ]
       });
       var nav = new mapboxgl.NavigationControl();
       map.addControl(nav, 'top-left');
@@ -70,6 +71,8 @@
         })
       );
       </script>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   <footer>
     <strong><p>Questions?  Send me an email: <a href="mailto:farrelld09@gmail.com">

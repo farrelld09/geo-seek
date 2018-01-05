@@ -15,6 +15,47 @@
  *= require normalize
  *= require skeleton
  */
+ /* entire container, keeps perspective */
+.flip-container {
+perspective: 1000px;
+}
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+width: 15em;
+height: 15em;
+}
+
+/* flip speed goes here */
+.flipper {
+transition: 0.6s;
+transform-style: preserve-3d;
+position: relative;
+}
+
+ /* hide back of pane during swap */
+.front, .back {
+backface-visibility: hidden;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+z-index: 2;
+/* for firefox 31 */
+transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+transform: rotateY(180deg);
+}
+
 @-webkit-keyframes hvr-pulse-grow {
 to {
 -webkit-transform: scale(1.1);
@@ -47,6 +88,18 @@ animation-iteration-count: infinite;
 animation-direction: alternate;
 }
 
+#invisible{
+display: none;
+}
+
+#visible{
+display:list-item;
+}
+
+a{
+color: white;
+}
+
 .post-module {
 border-color: #429EA6;
 border-radius: 3%;
@@ -61,16 +114,24 @@ align-content: center;
 text-align: center;
 }
 
+#tilecontainer{
+position: relative;
+text-align: center;
+}
+
+.centered {
+position: absolute;
+top: 30%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
 pre{
 display: none;
 }
 
 .weathertile{
 background: transparent;
-}
-
-#weather{
-align-self: auto;
 }
 
 #menu{
@@ -103,7 +164,7 @@ background-color: #FFFFFF;
 }
 
 label {
-font-family: 'Berkshire Swash', cursive;
+font-family: sans-serif;
 color:#C3511D;
 }
 
@@ -131,6 +192,18 @@ margin-left: auto;
 margin-right: auto;
 width: 80%;
 height: 500px;
+}
+
+#title1{
+color:#C3511D;
+}
+
+#title1:hover{
+color: #FFA278
+}
+
+#title{
+font-size: 5.1em;
 }
 
 #title{
@@ -166,10 +239,25 @@ a{
 background-color: #C3511D;
 }
 
+#submit1{
+text-align: center;
+background-color: #C3511D;
+color: white;
+text: bold;
+width: 240px;
+height: 40px;
+}
+
+#submit1:hover{
+background-color: #FFA278;
+}
+
 #submit{
 text-align: center;
-background-color: #E1E1E1;
-width: 120px;
+background-color: #C3511D;
+color: white;
+text: bold;
+width: 160px;
 height: 40px;
 }
 
@@ -203,32 +291,33 @@ border-color: #C3511D;
 padding: .5em;
 }
 
+#forecast{
+font-family: 'Berkshire Swash', cursive;
+color:#C3511D;
+font-weight: bold;
+}
+
 .showinfo{
 margin: auto;
 padding: .5em;
 }
 
-#info{
-background-color: #C3511D;
-}
-
-#tileImg:hover{
-border-color: #FFA278;
-height: 15.5em;
-width: 15.5em;
+.info{
+font-weight: bold;
+color: #C3511D;
+font-family: sans-serif;
 }
 
 #tileText:hover{
-font-size: 1.2em;
+font-size: 1.6em;
 color: #FFA278;
 }
 
 #tileText{
 font-family: 'Berkshire Swash', cursive;
-background-color: #FFFFFF;
 color:#C3511D;
 font-weight: bold;
-font-size: 1em;
+font-size: 1.5em;
 margin: auto;
 text-align: center;
 padding: .5em;
@@ -236,9 +325,6 @@ padding: .5em;
 
 footer{
 background-color: #429EA6;
-/*border-top-color: #429EA6;*/
-/*border-top-style: solid;
-border-top-width: 7px;*/
 text-align: center;
 vertical-align: middle;
 height: 50px;

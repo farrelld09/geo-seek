@@ -5,16 +5,18 @@ import NavBar from './components/NavBar';
 import IndexContainer from "./containers/IndexContainer"
 import TrailTile from "./components/TrailTile";
 import TrailShowContainer from "./containers/TrailShowContainer";
-import UserShowContainer from "./containers/UserShowContainer"
+import TripsContainer from "./containers/TripsContainer";
 
 const App = props => {
   return(
     <div>
       <Router history={browserHistory}>
-        <Route path='/' component={IndexContainer}/>
-          <Route path='/users/:id' component={UserShowContainer}/>
+        <Route path='/' component={NavBar}>
+          <IndexRoute  component={IndexContainer}/>
+          <Route path='/trips' component={TripsContainer}/>
           <Route path='/trails' component={IndexContainer}/>
           <Route path='/trails/:id' component={TrailShowContainer}/>
+        </Route>
       </Router>
     </div>
   );

@@ -11,9 +11,9 @@ const WeatherTile = props => {
   return(
       <div className="two-thirds column">
         <div className="post-module animated bounceInDown weathertile">
-          <h3>Trail Forecast</h3>
-            <h6>Temperature: {props.temp}</h6>
-            <h6>Feels Like: {props.feelslike}</h6>
+          <h3 id="forecast">TRAIL FORECAST</h3>
+            <h6 className="info">TEMPERATURE: {props.temp}</h6>
+            <h6 className="info">FEELS LIKE: {props.feelslike}</h6>
             <img src={props.icon}/>
         </div>
       </div>

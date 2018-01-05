@@ -177,14 +177,14 @@ class IndexContainer extends Component {
             <div className="row">
           <h1 id="findtrails">Find Trails</h1>
             <form onSubmit={this.getCoordinates}>
-              <label htmlFor="city">City</label>
+              <label htmlFor="city">CITY</label>
               <input type="text" name="text" value={this.state.city} onChange={this.handleChangeCity}/>
-              <label>Country</label>
+              <label>COUNTRY</label>
               <CountryDropdown value={country}
               onChange={(val) => this.handleChangeCountry(val)}/>
-              <label htmlFor="maxDistance">Max Distance in Miles</label>
+              <label htmlFor="maxDistance">MAX DISTANCE IN MILES</label>
               <input type="number" name="maxDistance" value={this.state.maxDistance} onChange={this.handleChangeDistance}/>
-              <label htmlFor="maxResults">Max Number of Trails Returned</label>
+              <label htmlFor="maxResults">MAX NUMBER OF TRAILS</label>
               <input type="number" name="maxResults" value={this.state.maxResults} onChange={this.handleChangeResults}/>
               <input className="button" id="submit" type="submit" value="Get Trails!"/>
             </form>
