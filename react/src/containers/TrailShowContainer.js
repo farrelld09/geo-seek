@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import TrailTile from "../components/TrailTile";
 import Scrollchor from 'react-scrollchor';
 import WeatherTile from '../components/WeatherTile';
-import HikeTile from '../components/HikeTile';
+import AddHike from '../components/AddHike';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
+import DropdownMenu from 'react-dd-menu';
 
 class TrailShowContainer extends Component {
   constructor(props) {
@@ -13,14 +14,28 @@ class TrailShowContainer extends Component {
       weatherinfo: [],
       userId: 0,
       userTrips: [],
-      tripMenuClicked: false
+      isMenuOpen: false
     }
     this.createPoint = this.createPoint.bind(this)
     this.flyer = this.flyer.bind(this)
     this.getWeather = this.getWeather.bind(this)
     this.getTrailData = this.getTrailData.bind(this)
     this.getTrips = this.getTrips.bind(this)
-    this.showTrips = this.showTrips.bind(this)
+    this.toggle = this.toggle.bind(this);
+    this.close = this.close.bind(this);
+    this.topFunction = this.topFunction.bind(this)
+  }
+
+  toggle() {
+    this.setState({ isMenuOpen: !this.state.isMenuOpen });
+  }
+
+  close() {
+    this.setState({ isMenuOpen: false });
+  }
+
+  topFunction() {
+    document.documentElement.scrollTop = 0;
   }
 
   componentDidMount () {
@@ -43,12 +58,12 @@ class TrailShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         trailinfo: body.trail
       });
       this.createPoint();
       this.flyer();
+      this.topFunction();
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -137,23 +152,13 @@ class TrailShowContainer extends Component {
        })
     }
 
-    showTrips() {
-      if (this.state.tripMenuClick == false) {
-        this.setState({tripMenuClick: true});
-      } else {
-        this.setState({tripMenuClick: false});
-      }
-    }
-
   render() {
 
-    let tripMenu
-
-    if (this.state.tripMenuClick) {
-      tripMenu = "visible";
-    } else {
-      tripMenu = "invisible"
-    }
+    const menuOptions = {
+      isOpen: this.state.isMenuOpen,
+      close: this.close,
+      align: 'left'
+    };
 
     let trailpic
     if (this.state.trailinfo.imgMedium == '') {
@@ -168,13 +173,16 @@ class TrailShowContainer extends Component {
           feelslike={forecast.feelslike_string}
           temp={forecast.dewpoint_string}
           icon={forecast.icon_url}
+          wind_string={forecast.wind_string}
+          weather={forecast.weather}
+          icon_url={forecast.icon_url}
         />
       )
     })
 
     let trips = this.state.userTrips.map(trip => {
       return(
-        <HikeTile
+        <AddHike
           key={trip.id}
           tripId={trip.id}
           name={trip.name}
@@ -190,19 +198,19 @@ class TrailShowContainer extends Component {
           <div className="row">
             <h1 id="trailshowtitle">{this.state.trailinfo.name}</h1>
             <img id="showImage" src={trailpic}></img>
-            <button id="submit1" onClick={this.showTrips}>ADD TO TRIP</button>
-            <button id="submit1" onClick={this.getWeather}>GET WEATHER CONDITIONS</button>
+            {weather}
+            <button id="submit1" onClick={this.toggle}>ADD TO TRIP</button>
+            <button id="submit1" onClick={this.getWeather}>TRAIL FORECAST</button>
             <button id="submit1" onClick={this.flyer}>RE-PIN TRAILHEAD</button>
-              <div id={tripMenu}>
-                {trips}
-              </div>
+                <DropdownMenu {...menuOptions}>
+                   {trips}
+               </DropdownMenu>
               <p className="info">CITY: {this.state.trailinfo.location}<br/>
+              SUMMARY: {this.state.trailinfo.summary}<br/>
               TRAIL LENGTH: {this.state.trailinfo.length} miles<br/>
               RATING: {this.state.trailinfo.stars}/5<br/>
+              CONDITIONS: {this.state.trailinfo.conditionDetails}<br/>
               </p>
-              <div className="weather">
-                {weather}
-              </div>
           </div>
         </div>
       </div>

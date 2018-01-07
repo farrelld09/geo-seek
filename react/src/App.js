@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import NavBar from './components/NavBar';
 import IndexContainer from "./containers/IndexContainer"
 import TrailTile from "./components/TrailTile";
+import TripTile from "./components/TripTile";
 import TrailShowContainer from "./containers/TrailShowContainer";
 import TripsContainer from "./containers/TripsContainer";
 

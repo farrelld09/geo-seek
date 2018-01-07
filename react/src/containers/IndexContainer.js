@@ -186,7 +186,7 @@ class IndexContainer extends Component {
               <input type="number" name="maxDistance" value={this.state.maxDistance} onChange={this.handleChangeDistance}/>
               <label htmlFor="maxResults">MAX NUMBER OF TRAILS</label>
               <input type="number" name="maxResults" value={this.state.maxResults} onChange={this.handleChangeResults}/>
-              <input className="button" id="submit" type="submit" value="Get Trails!"/>
+              <input className="button" id="submit1" type="submit" value="Get Trails!"/>
             </form>
           </div>
         </div>

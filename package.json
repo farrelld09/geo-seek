@@ -49,6 +49,7 @@
     "mapbox-gl": "^0.42.2",
     "react": "^15.6.1",
     "react-country-region-selector": "^1.2.3",
+    "react-dd-menu": "^2.0.2",
     "react-dom": "^15.6.1",
     "react-fontawesome": "^1.6.1",
     "react-foundation": "^0.9.2",
@@ -56,6 +57,7 @@
     "react-mapbox-gl": "^3.4.0",
     "react-router": "^3.0.5",
     "react-scrollchor": "^4.1.0",
+    "react-transition-group": "^2.2.1",
     "react-uikit-button": "^2.0.2",
     "supercluster": "^2.3.0",
     "webpack": "^2.6.0"

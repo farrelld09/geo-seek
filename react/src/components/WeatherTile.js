@@ -4,19 +4,15 @@ import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 
 const WeatherTile = props => {
 
-  let topFunction = () => {
-    document.documentElement.scrollTop = 0;
-  }
-
   return(
-      <div className="two-thirds column">
-        <div className="post-module animated bounceInDown weathertile">
+        <div className="post-module animated fadeInDown weathertile">
           <h3 id="forecast">TRAIL FORECAST</h3>
             <h6 className="info">TEMPERATURE: {props.temp}</h6>
             <h6 className="info">FEELS LIKE: {props.feelslike}</h6>
-            <img src={props.icon}/>
-        </div>
-      </div>
+            <h6 className="info">WIND: {props.wind_string}</h6>
+            <h6 className="info">CONDITIONS: {props.weather}</h6>
+            <img src={props.icon_url}/>
+          </div>
   );
 };
 

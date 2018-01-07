@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :trips
       resources :trails
       resources :hikes
+      resources :trips do
+        resources :hikes
+      end
     end
   end
 end

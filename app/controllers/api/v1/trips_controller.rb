@@ -5,7 +5,8 @@ class Api::V1::TripsController < ApiController
   end
 
   def show
-    render json: Trip.find(params[:id])
+    trip = Trip.find(params[:id])
+    render json: trip
   end
 
   def create
@@ -24,7 +25,8 @@ class Api::V1::TripsController < ApiController
   def trip_params
     params.require(:trip).permit(
       :id,
-      :name
+      :name,
+      :user_id
       )
   end
 end

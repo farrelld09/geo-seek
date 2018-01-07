@@ -16,6 +16,36 @@
  *= require skeleton
  */
  /* entire container, keeps perspective */
+ @keyframes swing {
+   20% {
+     transform: rotate3d(0, 0, 1, 15deg);
+   }
+
+   40% {
+     transform: rotate3d(0, 0, 1, -10deg);
+   }
+
+   60% {
+     transform: rotate3d(0, 0, 1, 5deg);
+   }
+
+   80% {
+     transform: rotate3d(0, 0, 1, -5deg);
+   }
+
+   to {
+     transform: rotate3d(0, 0, 1, 0deg);
+   }
+ }
+
+ .swing {
+ }
+
+ .swing:hover{
+ transform-origin: top center;
+ animation-name: swing;
+}
+
 .flip-container {
 perspective: 1000px;
 }
@@ -25,8 +55,8 @@ transform: rotateY(180deg);
 }
 
 .flip-container, .front, .back {
-width: 15em;
-height: 15em;
+width: 14em;
+height: 14em;
 }
 
 /* flip speed goes here */
@@ -42,6 +72,7 @@ backface-visibility: hidden;
 position: absolute;
 top: 0;
 left: 0;
+padding: .5em;
 }
 
 /* front pane, placed above back */
@@ -88,12 +119,19 @@ animation-iteration-count: infinite;
 animation-direction: alternate;
 }
 
-#invisible{
-display: none;
+#tripbutton{
+width: 250px;
+height: 50px;
+background-color: #C3511D;
 }
 
-#visible{
-display:list-item;
+#tripbutton:hover{
+background-color: #FFA278;
+}
+
+#tripbuttontext{
+font-family: 'Berkshire Swash';
+color: #FFFFFF;
 }
 
 a{
@@ -132,6 +170,7 @@ display: none;
 
 .weathertile{
 background: transparent;
+padding-bottom: 1em;
 }
 
 #menu{
@@ -151,7 +190,7 @@ background-color: #429EA6;
 color: #FFFFFF;
 }
 
-.button {
+button {
 display: inline-block;
 width: 120px;
 height: 40px;
@@ -183,7 +222,6 @@ color:#C3511D;
 }
 
 #map{
-/*filter: brightness(110%);*/
 padding-bottom: .5em;
 border-width: 7px;
 border-style: solid;
@@ -195,11 +233,11 @@ height: 500px;
 }
 
 #title1{
-color:#C3511D;
+color:#FFA278;
 }
 
 #title1:hover{
-color: #FFA278
+color: white;
 }
 
 #title{
@@ -218,10 +256,10 @@ filter:contrast(110%);
 .top-bar{
 filter: brightness(150%);
 font-family: 'Berkshire Swash', cursive;
-border-style:solid;
+border-style: solid;
 border-width: 7px;
 border-color: #429EA6;
-color:#C3511D;
+color: #C3511D;
 text-rendering: optimizeLegibility;
 text-align: center;
 font-stretch: extra-expanded;
@@ -240,16 +278,22 @@ background-color: #C3511D;
 }
 
 #submit1{
+text-rendering: optimizeLegibility;
 text-align: center;
-background-color: #C3511D;
-color: white;
+background-color: white;
+color: #C3511D;
 text: bold;
 width: 240px;
 height: 40px;
+font-size:large;
+border-color: #C3511D;
+border-width:2px;
 }
 
 #submit1:hover{
-background-color: #FFA278;
+color:#FFA278;
+border-width: 4px;
+height: 44px;
 }
 
 #submit{
@@ -272,8 +316,8 @@ padding: .5em;
 border-color: #C3511D;
 shadow: 10px;
 border-radius: 3%;
-height: 15em;
-width: 15em;
+height: 13em;
+width: 13em;
 position: sticky;
 align-content: center;
 border-style: solid;
@@ -302,11 +346,11 @@ margin: auto;
 padding: .5em;
 }
 
-
 .info{
 font-weight: bold;
 color: #C3511D;
 font-family: sans-serif;
+font-size: large;
 }
 
 #tileText:hover{

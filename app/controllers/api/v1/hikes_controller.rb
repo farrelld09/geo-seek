@@ -1,6 +1,11 @@
 class Api::V1::HikesController < ApiController
   def index
-    hikes = Hike.where(trip_id: current_trip.id)
+    hikes = Hike.all
+    render json: hikes
+  end
+
+  def show
+    hikes = Hike.where(trip_id: params[:id])
     render json: hikes
   end
 

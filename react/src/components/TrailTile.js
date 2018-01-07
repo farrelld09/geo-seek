@@ -67,7 +67,6 @@ const TrailTile = props => {
 
   return(
     <div className="one-third column" onClick={props.renderShow}>
-      {/* <div id="tilecontainer" className="post-module animated bounceInUp"> */}
         <div id="tilecontainer" className="flip-container post-module animated bounceInUp">
             <div className="flipper">
               <div className="front">
@@ -81,7 +80,6 @@ const TrailTile = props => {
            </div>
          </div>
       </div>
-    // </div>
 );
 };
 
