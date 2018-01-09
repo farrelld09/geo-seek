@@ -7,7 +7,8 @@ class TripsContainer extends Component {
     super(props);
     this.state = {
       trips: [],
-      newTripName:''
+      newTripName:'',
+      currentUser: {}
     }
     this.onNameChange = this.onNameChange.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
@@ -35,7 +36,8 @@ class TripsContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        trips: body
+        trips: body.trips,
+        currentUser: body.trips[0].current_user
       });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -43,7 +45,7 @@ class TripsContainer extends Component {
 
   handleClearForm(event){
     this.setState({
-      newTripName: ''
+      newTripName: '',
     });
   }
 
@@ -76,7 +78,7 @@ class TripsContainer extends Component {
     event.preventDefault();
     let formPayload = {
       name: this.state.newTripName,
-      user_id: this.state.trips[0].user_id
+      user_id: this.state.currentUser.id
     };
     this.addTrip(formPayload);
   }

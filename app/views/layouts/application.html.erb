@@ -32,7 +32,6 @@
   </a>
   <ul class="main-navigation" role="navigation">
     <% if current_user  %>
-      <li id="menu">Signed in as <%= "#{current_user.first_name} #{current_user.last_name}" %></li>
       <li id="menu" class="hvr-grow"><a class="button button-primary" id="submit1" href="logout">Sign Out</a></li>
     <% else %>
       <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="auth/google">Sign In</a></li>

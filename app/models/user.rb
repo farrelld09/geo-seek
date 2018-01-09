@@ -1,8 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  has_many :trips
   def self.update_or_create(auth)
     user = User.find_by(uid: auth[:uid]) || User.new
     user.attributes = {
@@ -15,7 +12,13 @@ class User < ApplicationRecord
       refresh_token: auth[:credentials][:refresh_token],
       oauth_expires_at: auth[:credentials][:expires_at]
     }
-    user.save!
-    user
+    unless User.find_by(uid: auth[:uid])
+      user.save!
+      example_trip = Trip.create(name: "Example Trip", user: user)
+      user
+    else
+      user.save!
+      user
+    end
   end
 end

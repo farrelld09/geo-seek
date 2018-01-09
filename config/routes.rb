@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: 'home#index'
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
+  root "sign_in#index"
 
   resources :trails
   resources :users
@@ -18,4 +15,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
+  get '/*all', to: 'sign_in#index'
 end

@@ -1,4 +1,7 @@
 class Api::V1::TripsController < ApiController
+
+skip_before_action :verify_authenticity_token, only: [:index, :show, :create]
+
   def index
     trips = Trip.where(user_id: current_user.id)
     render json: trips
@@ -12,7 +15,7 @@ class Api::V1::TripsController < ApiController
   def create
     trip = Trip.new(trip_params)
     if trip.save
-      render json: trip
+      render json: Trip.where(user: current_user)
     else
       render json:
       { error: trip.errors.full_messages },
@@ -24,7 +27,6 @@ class Api::V1::TripsController < ApiController
 
   def trip_params
     params.require(:trip).permit(
-      :id,
       :name,
       :user_id
       )

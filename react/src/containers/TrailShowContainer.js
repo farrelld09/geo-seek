@@ -84,7 +84,7 @@ class TrailShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        userTrips: body
+        userTrips: body.trips
       });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
