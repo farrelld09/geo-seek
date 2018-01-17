@@ -94,7 +94,7 @@ class TrailShowContainer extends Component {
     event.preventDefault()
     let latitude = this.state.trailinfo.latitude
     let longitude = this.state.trailinfo.longitude
-    fetch(`http://api.wunderground.com/api/25ce28b936883239/conditions/q/${latitude},${longitude}.json`)
+    fetch(`https://api.wunderground.com/api/25ce28b936883239/conditions/q/${latitude},${longitude}.json`)
     .then(response => {
     if (response.ok) {
       return response;
@@ -153,7 +153,6 @@ class TrailShowContainer extends Component {
     }
 
   render() {
-
     const menuOptions = {
       isOpen: this.state.isMenuOpen,
       close: this.close,

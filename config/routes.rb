@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   get '/*all', to: 'sign_in#index'
+  get 'index', to: 'home#index'
 end

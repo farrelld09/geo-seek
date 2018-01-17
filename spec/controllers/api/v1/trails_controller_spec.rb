@@ -36,27 +36,27 @@ RSpec.describe Api::V1::TrailsController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
       expect(returned_json.length).to eq 1
-      expect(returned_json[0]['id']).to eq 2
-      expect(returned_json[0]['name']).to eq 'trail1'
-      expect(returned_json[0]['summary']).to eq 'trail1'
-      expect(returned_json[0]['difficulty']).to eq '3'
-      expect(returned_json[0]['stars']).to eq 3
-      expect(returned_json[0]['starVotes']).to eq 3
-      expect(returned_json[0]['location']).to eq 'Boulder'
-      expect(returned_json[0]['url']).to eq '.com'
-      expect(returned_json[0]['imgSqSmall']).to eq 'url'
-      expect(returned_json[0]['imgSmall']).to eq 'url'
-      expect(returned_json[0]['imgSmallMed']).to eq 'url'
-      expect(returned_json[0]['imgMedium']).to eq 'url'
-      expect(returned_json[0]['length']).to eq 6
-      expect(returned_json[0]['ascent']).to eq 6
-      expect(returned_json[0]['descent']).to eq 6
-      expect(returned_json[0]['high']).to eq 6
-      expect(returned_json[0]['low']).to eq 6
-      expect(returned_json[0]['longitude']).to eq 6
-      expect(returned_json[0]['latitude']).to eq 6
-      expect(returned_json[0]['conditionStatus']).to eq 'good'
-      expect(returned_json[0]['conditionDetails']).to eq 'good'
+      expect(returned_json['trails'][0]['id']).to eq 2
+      expect(returned_json['trails'][0]['name']).to eq 'trail1'
+      expect(returned_json['trails'][0]['summary']).to eq 'trail1'
+      expect(returned_json['trails'][0]['difficulty']).to eq '3'
+      expect(returned_json['trails'][0]['stars']).to eq 3
+      expect(returned_json['trails'][0]['starVotes']).to eq 3
+      expect(returned_json['trails'][0]['location']).to eq 'Boulder'
+      expect(returned_json['trails'][0]['url']).to eq '.com'
+      expect(returned_json['trails'][0]['imgSqSmall']).to eq 'url'
+      expect(returned_json['trails'][0]['imgSmall']).to eq 'url'
+      expect(returned_json['trails'][0]['imgSmallMed']).to eq 'url'
+      expect(returned_json['trails'][0]['imgMedium']).to eq 'url'
+      expect(returned_json['trails'][0]['length']).to eq 6
+      expect(returned_json['trails'][0]['ascent']).to eq 6
+      expect(returned_json['trails'][0]['descent']).to eq 6
+      expect(returned_json['trails'][0]['high']).to eq 6
+      expect(returned_json['trails'][0]['low']).to eq 6
+      expect(returned_json['trails'][0]['longitude']).to eq 6
+      expect(returned_json['trails'][0]['latitude']).to eq 6
+      expect(returned_json['trails'][0]['conditionStatus']).to eq 'good'
+      expect(returned_json['trails'][0]['conditionDetails']).to eq 'good'
     end
   end
 
@@ -67,27 +67,27 @@ RSpec.describe Api::V1::TrailsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
-      expect(returned_json['id']).to eq 2
-      expect(returned_json['name']).to eq 'trail1'
-      expect(returned_json['summary']).to eq 'trail1'
-      expect(returned_json['difficulty']).to eq '3'
-      expect(returned_json['stars']).to eq 3
-      expect(returned_json['starVotes']).to eq 3
-      expect(returned_json['location']).to eq 'Boulder'
-      expect(returned_json['url']).to eq '.com'
-      expect(returned_json['imgSqSmall']).to eq 'url'
-      expect(returned_json['imgSmall']).to eq 'url'
-      expect(returned_json['imgSmallMed']).to eq 'url'
-      expect(returned_json['imgMedium']).to eq 'url'
-      expect(returned_json['length']).to eq 6
-      expect(returned_json['ascent']).to eq 6
-      expect(returned_json['descent']).to eq 6
-      expect(returned_json['high']).to eq 6
-      expect(returned_json['low']).to eq 6
-      expect(returned_json['longitude']).to eq 6
-      expect(returned_json['latitude']).to eq 6
-      expect(returned_json['conditionStatus']).to eq 'good'
-      expect(returned_json['conditionDetails']).to eq 'good'
+      expect(returned_json['trail']['id']).to eq 2
+      expect(returned_json['trail']['name']).to eq 'trail1'
+      expect(returned_json['trail']['summary']).to eq 'trail1'
+      expect(returned_json['trail']['difficulty']).to eq '3'
+      expect(returned_json['trail']['stars']).to eq 3
+      expect(returned_json['trail']['starVotes']).to eq 3
+      expect(returned_json['trail']['location']).to eq 'Boulder'
+      expect(returned_json['trail']['url']).to eq '.com'
+      expect(returned_json['trail']['imgSqSmall']).to eq 'url'
+      expect(returned_json['trail']['imgSmall']).to eq 'url'
+      expect(returned_json['trail']['imgSmallMed']).to eq 'url'
+      expect(returned_json['trail']['imgMedium']).to eq 'url'
+      expect(returned_json['trail']['length']).to eq 6
+      expect(returned_json['trail']['ascent']).to eq 6
+      expect(returned_json['trail']['descent']).to eq 6
+      expect(returned_json['trail']['high']).to eq 6
+      expect(returned_json['trail']['low']).to eq 6
+      expect(returned_json['trail']['longitude']).to eq 6
+      expect(returned_json['trail']['latitude']).to eq 6
+      expect(returned_json['trail']['conditionStatus']).to eq 'good'
+      expect(returned_json['trail']['conditionDetails']).to eq 'good'
     end
   end
 

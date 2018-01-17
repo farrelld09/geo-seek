@@ -5,13 +5,25 @@ application up and running.
 
 * Name: Geo-Seek
 * Author: Dan Farrell
-* <Heroku Link Here>
+* URL: https://take-a-hike-app.herokuapp.com/
 
-* Features Coming Soon
+* Features
+  * Users can search for hiking trails anywhere in the world
+  * User can find information on trails, including length, difficulty, and the
+    current weather conditions
+  * Users can receive directions to the trailhead
+  * A User can save a trail to a specific Trip they create on their account.
+  * Users can save trails to the database so they can be accessed later without
+    another request to the API
 
 * Technologies
-  * Mapping
-  * React
+  * MapboxGL (User location, trail head location, directions)
+  * Google Sign In
+  * ReactJS
+  * Ruby on Rails
+  * RSPEC
+  * Jasmine
+  * External and Internal API calls
   * Postgresql
 
 *Badges

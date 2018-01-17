@@ -34,7 +34,6 @@ const TrailTile = props => {
   }
 
   let newTrail = () => {
-    debugger
     fetch('/api/v1/trails', {
       credentials: 'same-origin',
       method: 'POST',
