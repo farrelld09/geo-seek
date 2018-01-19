@@ -5,8 +5,8 @@ class Api::V1::HikesController < ApiController
   end
 
   def show
-    hikes = Hike.where(trip_id: params[:id])
-    render json: hikes
+    myhikes = Hike.where(trip_id: params[:id])
+    render json: myhikes
   end
 
   def create
@@ -24,6 +24,7 @@ class Api::V1::HikesController < ApiController
 
   def hike_params
     params.require(:hike).permit(
+      :id,
       :trail_id,
       :trip_id,
       :rank
