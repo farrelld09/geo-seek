@@ -16,8 +16,7 @@ RSpec.describe User, type: :model do
         expires_at: DateTime.now
       }
     }
-    User.update_or_create(auth)
-    new_user = User.first
+    new_user = User.update_or_create(auth)
 
     expect(new_user.provider).to eq('google')
     expect(new_user.uid).to eq('12345678910')

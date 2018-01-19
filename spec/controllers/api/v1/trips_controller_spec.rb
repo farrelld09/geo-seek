@@ -4,20 +4,13 @@ require 'spec_helper'
 RSpec.describe Api::V1::TripsController, type: :controller do
   let!(:user) do
     User.create(
-      id: '2',
       first_name: 'Dan'
     )
   end
   let!(:trip) do
     Trip.create(
-      id: '2',
       name: 'trip1',
-      user_id: 2
-    )
-  end
-  let!(:trail) do
-    Trail.create(
-      id: '1'
+      user: user
     )
   end
 
@@ -33,9 +26,9 @@ RSpec.describe Api::V1::TripsController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
       expect(returned_json.length).to eq 1
-      expect(returned_json['trips'][0]['id']).to eq 2
+      expect(returned_json['trips'][0]['id']).to eq trip.id
       expect(returned_json['trips'][0]['name']).to eq 'trip1'
-      expect(returned_json['trips'][0]['user_id']).to eq 2
+      expect(returned_json['trips'][0]['user_id']).to eq user.id
     end
   end
 
@@ -46,9 +39,9 @@ RSpec.describe Api::V1::TripsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
-      expect(returned_json['trip']['id']).to eq 2
+      expect(returned_json['trip']['id']).to eq trip.id
       expect(returned_json['trip']['name']).to eq 'trip1'
-      expect(returned_json['trip']['user_id']).to eq 2
+      expect(returned_json['trip']['user_id']).to eq user.id
     end
   end
 
@@ -59,7 +52,7 @@ RSpec.describe Api::V1::TripsController, type: :controller do
           trip:
             {
               name: 'trip2',
-              user_id: 2
+              user_id: user.id
             }
         }
 

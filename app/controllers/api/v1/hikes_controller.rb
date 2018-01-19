@@ -1,10 +1,5 @@
 class Api::V1::HikesController < ApiController
   def index
-    hikes = Hike.all
-    render json: hikes
-  end
-
-  def show
     myhikes = Hike.where(trip_id: params[:id])
     render json: myhikes
   end
@@ -24,7 +19,6 @@ class Api::V1::HikesController < ApiController
 
   def hike_params
     params.require(:hike).permit(
-      :id,
       :trail_id,
       :trip_id,
       :rank
