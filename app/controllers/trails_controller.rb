@@ -1,8 +1,4 @@
 class TrailsController < ApplicationController
-  def index
-    @trails = Trail.all
-  end
-  def show
-    @trail = Trail.find(params[:id])
-  end
+  def index; end
+  def show; end
 end
