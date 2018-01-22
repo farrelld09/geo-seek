@@ -28,6 +28,6 @@ application up and running.
 
 *Badges
 
-[![Build Status](https://codeship.com/projects/865b12c0-bd10-0135-6096-6e1e8880e8ba/status?branch=master)
+[![Build Status](https://codeship.com/projects/865b12c0-bd10-0135-6096-6e1e8880e8ba/status?branch=master)](https://app.codeship.com/projects/259663)
 [![Code Climate](https://codeclimate.com/github/farrelld09/geo-seek/badges/gpa.svg)](https://codeclimate.com/github/farrelld09/geo-seek)
 [![Coverage Status](https://coveralls.io/repos/github/farrelld09/geo-seek/badge.svg?branch=master)](https://coveralls.io/github/farrelld09/geo-seek?branch=master)

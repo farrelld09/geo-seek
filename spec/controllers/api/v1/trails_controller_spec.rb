@@ -4,7 +4,6 @@ require 'spec_helper'
 RSpec.describe Api::V1::TrailsController, type: :controller do
   let!(:trail) do
     Trail.create(
-      id: '2',
       name: 'trail1',
       summary: 'trail1',
       difficulty: 3,
@@ -36,7 +35,7 @@ RSpec.describe Api::V1::TrailsController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
       expect(returned_json.length).to eq 1
-      expect(returned_json['trails'][0]['id']).to eq 2
+      expect(returned_json['trails'][0]['id']).to eq trail.id
       expect(returned_json['trails'][0]['name']).to eq 'trail1'
       expect(returned_json['trails'][0]['summary']).to eq 'trail1'
       expect(returned_json['trails'][0]['difficulty']).to eq '3'
@@ -67,7 +66,7 @@ RSpec.describe Api::V1::TrailsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
-      expect(returned_json['trail']['id']).to eq 2
+      expect(returned_json['trail']['id']).to eq trail.id
       expect(returned_json['trail']['name']).to eq 'trail1'
       expect(returned_json['trail']['summary']).to eq 'trail1'
       expect(returned_json['trail']['difficulty']).to eq '3'
