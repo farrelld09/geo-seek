@@ -35,7 +35,7 @@ RSpec.describe Api::V1::HikesController, type: :controller do
 
   describe 'GET#index' do
     it 'returns a list of all the hikes for that trip' do
-      get :index, params: { id: trip.id }
+      get :index, params: { trip_id: trip.id }
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')

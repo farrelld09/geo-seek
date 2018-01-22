@@ -33,7 +33,7 @@ class TripTile extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/hikes/${this.props.id}`, {
+    fetch(`/api/v1/trips/${this.props.id}/hikes`, {
     credentials: 'same-origin'
     })
     .then(response => {
