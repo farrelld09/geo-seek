@@ -15,11 +15,11 @@ class IndexContainer extends Component {
       trailinfo: [],
       city: 'Boulder, CO',
       country: 'United States',
-      maxResults: 9,
+      maxResults: 18,
       maxDistance: 20,
       countryCode: '',
       currentPage: 1,
-      trailsPerPage: 3
+      trailsPerPage: 9
     };
     this.handleClick = this.handleClick.bind(this);
     this.getTrails = this.getTrails.bind(this)
