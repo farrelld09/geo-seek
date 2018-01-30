@@ -9,6 +9,7 @@ class HikeTile extends Component {
       trail: []
     }
     this.lookUpTrail = this.lookUpTrail.bind(this)
+    this.deleteHike = this.deleteHike.bind(this)
   }
 
   componentDidMount(){
@@ -37,6 +38,29 @@ class HikeTile extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  deleteHike() {
+    fetch(`/api/v1/hikes/${this.props.id}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Trail added to database!")
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      console.log("Hike Deleted!")
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render () {
 
   return(
@@ -53,6 +77,7 @@ class HikeTile extends Component {
           </div>
          </div>
        </div>
+       <button id="submit1" onClick={this.deleteHike}>Delete Hike</button>
      </div>
   );
 }

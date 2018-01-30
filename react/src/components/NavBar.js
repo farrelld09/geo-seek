@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, browserHistory } from 'react-router'
 
 const NavBar = props => {
-  return(
+  return (
   <div className="container">
     <div className="row">
       <div className="column">

@@ -15,6 +15,12 @@ class Api::V1::HikesController < ApiController
     end
   end
 
+  def destroy
+    binding.pry
+    @hike = Hike.where(trail_id: params[:trail_id])
+    @hike.delete
+  end
+
   private
 
   def hike_params
