@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, browserHistory } from 'react-router'
-import BackButton from './BackButton'
 
 const NavBar = props => {
   return(
