@@ -4,6 +4,11 @@ class Api::V1::HikesController < ApiController
     render json: myhikes
   end
 
+  def show
+    thisHike = Hike.where(id: params[:id])
+    render json: thisHike
+  end
+
   def create
     hike = Hike.new(hike_params)
     if hike.save
@@ -13,12 +18,6 @@ class Api::V1::HikesController < ApiController
       { error: hike.errors.full_messages },
       status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    binding.pry
-    @hike = Hike.where(trail_id: params[:trail_id])
-    @hike.delete
   end
 
   private
