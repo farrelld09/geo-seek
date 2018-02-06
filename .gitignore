@@ -19,6 +19,7 @@
 /react/coverage
 /coverage
 .env
+env.sh
 /config/secrets.yml
 
 .byebug_history
