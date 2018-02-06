@@ -4,7 +4,6 @@ import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import TrailTile from '../components/TrailTile';
 import { CountryDropdown } from 'react-country-region-selector';
 import * as countries from '../Constants';
-import Map from '../components/Map';
 
 class IndexContainer extends Component {
   constructor(props) {
