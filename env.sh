@@ -1,2 +1,1 @@
 export MAPBOX_ACCESS_TOKEN=VtdGc4Mm04MndyenRldW9wYzllIn0.djhxR3NXo9cTIOlCmHNLvQ
-export MAPBOX_KEY=pk.eyJ1IjoiZmFycmVsbGQwOSIsImEiOiJjamI0ZWVtdGc4Mm04MndyenRldW9wYzllIn0.djhxR3NXo9cTIOlCmHNLvQ

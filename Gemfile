@@ -7,7 +7,6 @@ end
 
 gem 'active_model_serializers'
 gem 'devise'
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'figaro'
 gem 'jbuilder', '~> 2.5'
 gem 'omniauth-google-oauth2', '~> 0.2.1'
