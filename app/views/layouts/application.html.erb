@@ -27,14 +27,13 @@
       <span><h1 id="title"><a href="/trails" id="title1">Take A Hike</a></h1><span>
     </div>
 <nav class="navigation">
-  <a href="#" class="menu-icon">
-    <i class="fa fa-bars"></i>
-  </a>
   <ul class="main-navigation" role="navigation">
     <% if current_user  %>
-      <li id="menu" class="hvr-grow"><a class="button button-primary" id="submit1" href="logout">Sign Out</a></li>
+      <li id="submit1"><a class="button button-primary" id="submit1" href="logout">Sign Out</a></li>
     <% else %>
-      <li id="menu" class="hvr-grow"><a class="button button-primary" id="menuButt" href="auth/google">Sign In</a></li>
+    <p id="homepage">Welcome to Take-A-Hike!  Sign in with your Gmail account to begin
+    searching the globe for hiking trails.</p>
+      <li id="submit1"><a class="button button-primary" id="submit1" href="auth/google">Sign In</a></li>
     <% end %>
   </ul>
 </nav>

@@ -16,6 +16,7 @@
  *= require skeleton
  */
  /* entire container, keeps perspective */
+
  @keyframes swing {
    20% {
      transform: rotate3d(0, 0, 1, 15deg);
@@ -244,6 +245,15 @@ color: white;
 font-size: 5.1em;
 }
 
+#homepage {
+text-align: center;
+color: #C3511D;
+font-size: 1.5em;
+font-weight: bold;
+font-family: sans-serif;
+text-rendering: optimizeLegibility;
+}
+
 #title{
 text-rendering: optimizeLegibility;
 font-size-adjust: auto;
@@ -263,7 +273,7 @@ color: #C3511D;
 text-rendering: optimizeLegibility;
 text-align: center;
 font-stretch: extra-expanded;
-background-size:cover;
+background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
 background-image: url('http://www.ethnography.com/wp-content/themes/pure-simple/images/banner.jpg');
