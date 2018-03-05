@@ -7,21 +7,21 @@ class Map extends Component {
     this.state = {
     }
   }
-//   mapboxgl.accessToken = 'pk.eyJ1IjoiZmFycmVsbGQwOSIsImEiOiJjamI0ZWVtdGc4Mm04MndyenRldW9wYzllIn0.djhxR3NXo9cTIOlCmHNLvQ';
-//   let map = new mapboxgl.Map({
-//     container: 'map',
-//     style: 'mapbox://styles/mapbox/streets-v9'
-//   });
-//   let nav = new mapboxgl.NavigationControl();
-//   map.addControl(nav, 'top-left');
-//
-//   map.addControl(new mapboxgl.GeolocateControl({
-//     positionOptions: {
-//       enableHighAccuracy: true
-//     },
-//     trackUserLocation: true
-//   })
-// );
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZmFycmVsbGQwOSIsImEiOiJjamI0ZWVtdGc4Mm04MndyenRldW9wYzllIn0.djhxR3NXo9cTIOlCmHNLvQ';
+  let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9'
+  });
+  let nav = new mapboxgl.NavigationControl();
+  map.addControl(nav, 'top-left');
+
+  map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  })
+);
 
 render () {
   mapboxgl.accessToken = 'pk.eyJ1IjoiZmFycmVsbGQwOSIsImEiOiJjamI0ZWVtdGc4Mm04MndyenRldW9wYzllIn0.djhxR3NXo9cTIOlCmHNLvQ';
