@@ -175,6 +175,8 @@ class IndexContainer extends Component {
           <div className="container">
             <div className="row">
           <h1 id="findtrails">Find Trails</h1>
+          <p id="homepage">Enter the city, country, and mile radius you want to
+          to hike near, and get out there!</p>
             <form onSubmit={this.getCoordinates}>
               <label htmlFor="city">CITY</label>
               <input type="text" name="text" value={this.state.city} onChange={this.handleChangeCity}/>
